@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class Lab {
      * @return a List<Integer> object.
      */
     public List<Integer> createList(){
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -36,7 +37,7 @@ public class Lab {
      * @return the size of List (number of items it holds.)
      */
     public int getSize(List<Integer> list){
-        return 0;
+        return list.size();
     }
 
     /**
@@ -48,6 +49,7 @@ public class Lab {
      * @return nothing, pass by reference will cause changes to the list object to be reflected across the program.
      */
     public void addToList(List<Integer> list, int value){
+        list.add(value);
     }
 
     /**
@@ -65,7 +67,7 @@ public class Lab {
      * @return the int value at the location in 'list' represented by 'index'.
      */
     public int get(List<Integer> list, int index){
-        return 0;
+        return list.get(index);
     }
 
     /**
@@ -78,7 +80,7 @@ public class Lab {
      * @return nothing, pass by reference will cause changes to the list object to be reflected across the program.
      */
     public void removeFromList(List<Integer> list, int position){
-
+        list.remove(position);
     }
 
     /**
@@ -91,5 +93,25 @@ public class Lab {
      * @return nothing, pass by reference will cause changes to the list object to be reflected across the program.
      */
     public void updateAtPosition(List<Integer> list, int position, int value){
+        list.set(position, value);
+    }
+    public static void main(String[] args) {
+        Lab lab = new Lab();
+        List<Integer> myList = lab.createList();
+
+        lab.addToList(myList, 10);
+        lab.addToList(myList, 20);
+        lab.addToList(myList, 30);
+
+        System.out.println("List: " + myList);            // [10, 20, 30]
+        System.out.println("Size: " + lab.getSize(myList)); // 3
+        System.out.println("Index 1: " + lab.get(myList, 1)); // 20
+
+        lab.updateAtPosition(myList, 1, 200);
+        System.out.println("After update: " + myList);    // [10, 200, 30]
+
+        lab.removeFromList(myList, 0);
+        System.out.println("After remove: " + myList);    // [200, 30]
     }
 }
+
